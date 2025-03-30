@@ -1,4 +1,9 @@
+import bcrypt from "bcryptjs";
 import type { NextAuthConfig } from "next-auth";
+import Credentials from "next-auth/providers/credentials";
+import { z } from "zod";
+import type { User } from "./app/lib/definitions";
+import postgres from "postgres";
 
 export const authConfig = {
   pages: {
@@ -17,5 +22,5 @@ export const authConfig = {
       return true;
     },
   },
-  providers: [], // Add providers with an empty array for now
+  providers: [Credentials], // Add providers with an empty array for now
 } satisfies NextAuthConfig;
